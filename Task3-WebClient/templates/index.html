@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Головна{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Ласкаво просимо до Курси і Тести!</h1>
+    <p class="lead">Створюйте курси та тести, керуйте ними та проходьте їх!</p>
+    <hr class="my-4">
+    <p>Щоб почати, будь ласка, увійдіть або зареєструйтесь.</p>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('login') }}" role="button">Вхід</a>
+    <a class="btn btn-secondary btn-lg" href="{{ url_for('register') }}" role="button">Реєстрація</a>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Всі тести{% endblock %}
+
+{% block content %}
+<h2>Всі тести</h2>
+<ul class="list-group">
+    {% for test in tests %}
+        <li class="list-group-item">
+            <a href="{{ url_for('test', test_id=test['_id']) }}">{{ test['name'] }}</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Тест{% endblock %}
+
+{% block content %}
+<h2>{{ test['name'] }}</h2>
+<ul class="list-group">
+    {% for question in test['questions'] %}
+        <li class="list-group-item">{{ question }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

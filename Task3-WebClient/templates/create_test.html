@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Додати тест{% endblock %}
+
+{% block content %}
+<h2>Додати новий тест</h2>
+<form method="POST" action="{{ url_for('create_test', course_id=course_id) }}">
+    <div class="form-group">
+        <label for="test_name">Назва тесту</label>
+        <input type="text" class="form-control" id="test_name" name="test_name" required>
+    </div>
+    <div class="form-group">
+        <label for="questions">Питання (по одному на рядок)</label>
+        <textarea class="form-control" id="questions" name="questions" rows="5" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Створити тест</button>
+</form>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Адмін-панель{% endblock %}
+
+{% block content %}
+<h2>Адмін-панель</h2>
+
+<h3>Користувачі</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ім'я користувача</th>
+            <th>Дії</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user['username'] }}</td>
+            <td>
+                <form method="POST" action="{{ url_for('delete_user', user_id=user['_id']) }}">
+                    <button type="submit" class="btn btn-danger btn-sm">Видалити</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3>Курси</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Назва</th>
+            <th>Опис</th>
+            <th>Дії</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for course in courses %}
+        <tr>
+            <td>{{ course['name'] }}</td>
+            <td>{{ course['description'] }}</td>
+            <td>
+                <a href="{{ url_for('edit_course', course_id=course['_id']) }}" class="btn btn-primary btn-sm">Редагувати</a>
+                <form method="POST" action="{{ url_for('delete_course', course_id=course['_id']) }}" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Видалити</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3>Тести</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Назва тесту</th>
+            <th>Дії</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for test in tests %}
+        <tr>
+            <td>{{ test['name'] }}</td>
+            <td>
+                <a href="{{ url_for('edit_test', test_id=test['_id']) }}" class="btn btn-primary btn-sm">Редагувати</a>
+                <form method="POST" action="{{ url_for('delete_test', test_id=test['_id']) }}" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Видалити</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ url_for('export_data_json') }}" class="btn btn-primary mt-4">Експорт бази даних в JSON</a>
+{% endblock %}
